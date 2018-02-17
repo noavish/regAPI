@@ -1,3 +1,17 @@
-<div class="item">
-    exp-item works!
+<div class="card">
+  <h4 class="card-header">{{expression.title}}
+    <span class="badge badge-default" *ngFor="let tag of expression.tags; let i = index"> {{tag}} </span>
+  </h4>
+  <div class="card-block">
+    <h6 class="card-title">{{expression.description}}</h6>
+    <hr>
+    <p class="card-text" (click)="isValidClicked()">{{validClicked ? expression.validExamples : 'Valid Example'}}</p>
+    <p class="card-text" (click)="isInvalidClicked()">{{invalidClicked ? expression.invalidExamples : 'Invalid Example'}}</p>
+
+    <button class="btn btn-primary" (click)="openDetails()">Get details</button>
+  </div>
+  <app-expression-details [detailsOpen]=detailsOpen [expressionId]=expression.id></app-expression-details>
 </div>
+
+
+<!--*ngIf="expression.tags.length > 1"-->

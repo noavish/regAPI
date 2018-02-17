@@ -7,6 +7,8 @@ import { CatalogSearchComponent } from './catalog-search/catalog-search.componen
 import { ExpItemComponent } from './exp-item/exp-item.component';
 import { ExpCatalogComponent } from './exp-catalog/exp-catalog.component';
 import {ExpressionsService} from './expressions.service';
+import { ExpressionDetailsComponent } from './expression-details/expression-details.component';
+import {TagsService} from './tags.service';
 
 
 @NgModule({
@@ -14,12 +16,13 @@ import {ExpressionsService} from './expressions.service';
     AppComponent,
     CatalogSearchComponent,
     ExpItemComponent,
-    ExpCatalogComponent
+    ExpCatalogComponent,
+    ExpressionDetailsComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [ExpressionsService],
+  providers: [ExpressionsService, TagsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

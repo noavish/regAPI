@@ -8,10 +8,24 @@ import {ExpressionItem} from '../expression-item.model';
 })
 export class ExpItemComponent implements OnInit {
   @Input() expression: ExpressionItem = new ExpressionItem();
+  validClicked: boolean;
+  invalidClicked: boolean;
+  detailsOpen: boolean;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  isValidClicked() {
+    this.validClicked = !this.validClicked;
+  }
+
+  isInvalidClicked() {
+    this.invalidClicked = !this.invalidClicked;
+  }
+
+  openDetails() {
+    this.detailsOpen = !this.detailsOpen;
+  }
 }

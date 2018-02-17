@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ExpressionItem} from '../expression-item.model';
 
 @Component({
   selector: 'app-catalog-search',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./catalog-search.component.css']
 })
 export class CatalogSearchComponent implements OnInit {
+  @Input() tagList: string[];
 
   constructor() { }
 

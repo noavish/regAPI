@@ -12,7 +12,7 @@ import { ExpressionItem } from '../expression-item.model';
 export class ExpCatalogComponent implements OnInit {
   expressionItems: ExpressionItem[];
 
-  constructor( private expressionsService: ExpressionsService) { }
+  constructor( private expressionsService: ExpressionsService ) { }
 
   ngOnInit() {
     this.expressionItems = this.expressionsService.getExpressions();
