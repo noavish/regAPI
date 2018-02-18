@@ -63,10 +63,18 @@ const Expressions: ExpressionItem[] = [
 @Injectable()
 export class ExpressionsService {
   ExpressionItems: ExpressionItem[] = Expressions;
+  filtered: ExpressionItem[] = Expressions;
 
   constructor() { }
 
   getExpressions() {
-    return Expressions;
+    return this.filtered;
   }
+
+  filterExpressions(searchTerm) {
+    console.log(searchTerm);
+    this.filtered = this.ExpressionItems.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
+    return this.filtered;
+  }
+
 }

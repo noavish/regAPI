@@ -1,5 +1,6 @@
 import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import {ExpressionItem} from '../expression-item.model';
+import {ExpressionsService} from '../expressions.service';
 
 @Component({
   selector: 'app-catalog-search',
@@ -7,16 +8,17 @@ import {ExpressionItem} from '../expression-item.model';
   styleUrls: ['./catalog-search.component.css']
 })
 export class CatalogSearchComponent implements OnInit {
-  @Output() searchInputChanged: EventEmitter<string> = new EventEmitter();
+  // @Output() searchInputChanged: EventEmitter<string> = new EventEmitter();
   @Input() tagList: string[];
-  searchTerm: string;
+  searchTerm: string = '';
 
-  constructor() { }
+  constructor( private expressionsService: ExpressionsService ) { }
 
   ngOnInit() {
   }
 
   searchByTitle() {
-    this.searchInputChanged.emit(this.searchTerm);
+    console.log(this.expressionsService.filterExpressions(this.searchTerm));
+    // this.searchInputChanged.emit(this.searchTerm);
   }
 }

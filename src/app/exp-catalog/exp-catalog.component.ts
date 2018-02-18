@@ -15,7 +15,9 @@ export class ExpCatalogComponent implements OnInit {
   constructor( private expressionsService: ExpressionsService ) { }
 
   ngOnInit() {
-    this.expressionItems = this.expressionsService.getExpressions();
+    setInterval(() => {
+      this.expressionItems = this.expressionsService.getExpressions();
+    }, 100);
   }
 
 }
