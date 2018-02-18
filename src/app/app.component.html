@@ -1,5 +1,5 @@
 <div class="head container">
-  <app-catalog-search [tagList]=tagList></app-catalog-search>
+  <app-catalog-search [tagList]=tagList (searchInputChanged)="searchTitle($event)"></app-catalog-search>
 </div>
 <hr>
 <div class="body container">

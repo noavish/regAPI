@@ -9,6 +9,8 @@ import { ExpCatalogComponent } from './exp-catalog/exp-catalog.component';
 import {ExpressionsService} from './expressions.service';
 import { ExpressionDetailsComponent } from './expression-details/expression-details.component';
 import {TagsService} from './tags.service';
+import {FormsModule} from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
@@ -17,10 +19,12 @@ import {TagsService} from './tags.service';
     CatalogSearchComponent,
     ExpItemComponent,
     ExpCatalogComponent,
-    ExpressionDetailsComponent
+    ExpressionDetailsComponent,
+    FilterPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [ExpressionsService, TagsService],
   bootstrap: [AppComponent]

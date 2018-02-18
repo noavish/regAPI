@@ -1,7 +1,7 @@
 <div class="row justify-content-sm-center">
   <form class="col-8">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search expressions">
+      <input type="text" class="form-control" placeholder="Search expressions" name="title-search" [(ngModel)]="searchTerm" (input)="searchByTitle()" />
       <div class="input-group-btn submit-btn-div">
         <button type="button" class="btn btn-primary btn-default">Search</button>
       </div>
@@ -9,7 +9,7 @@
   </form>
 </div>
 
-<div class="tags row justify-content-sm-center">
+<<div class="tags row justify-content-sm-center">
   <div class="col-10">
     <span class="badge badge-default" *ngFor="let tag of tagList"> {{tag}} </span>
   </div>

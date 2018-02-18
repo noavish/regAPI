@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import {ExpressionItem} from '../expression-item.model';
 
 @Component({
@@ -7,11 +7,16 @@ import {ExpressionItem} from '../expression-item.model';
   styleUrls: ['./catalog-search.component.css']
 })
 export class CatalogSearchComponent implements OnInit {
+  @Output() searchInputChanged: EventEmitter<string> = new EventEmitter();
   @Input() tagList: string[];
+  searchTerm: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  searchByTitle() {
+    this.searchInputChanged.emit(this.searchTerm);
+  }
 }
