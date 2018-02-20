@@ -8,9 +8,9 @@ import {ExpressionsService} from '../expressions.service';
   styleUrls: ['./catalog-search.component.css']
 })
 export class CatalogSearchComponent implements OnInit {
-  // @Output() searchInputChanged: EventEmitter<string> = new EventEmitter();
   @Input() tagList: string[];
   searchTerm: string = '';
+  searchTags: Set<string> = new Set();
 
   constructor( private expressionsService: ExpressionsService ) { }
 
@@ -18,7 +18,16 @@ export class CatalogSearchComponent implements OnInit {
   }
 
   searchByTitle() {
-    console.log(this.expressionsService.filterExpressions(this.searchTerm));
-    // this.searchInputChanged.emit(this.searchTerm);
+    this.expressionsService.searchingByInput.emit({searchTerm: this.searchTerm, searchTags: this.searchTags});
+  }
+
+  searchByTag(tag) {
+    if (!this.searchTags.has(tag)) {
+      this.searchTags.add(tag);
+    } else {
+      this.searchTags.delete(tag);
+    }
+    console.log(this.searchTags)
+    this.expressionsService.searchingByTags.emit({searchTerm: this.searchTerm, searchTags: this.searchTags});
   }
 }

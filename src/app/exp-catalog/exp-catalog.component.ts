@@ -12,12 +12,16 @@ import { ExpressionItem } from '../expression-item.model';
 export class ExpCatalogComponent implements OnInit {
   expressionItems: ExpressionItem[];
 
-  constructor( private expressionsService: ExpressionsService ) { }
-
-  ngOnInit() {
-    setInterval(() => {
-      this.expressionItems = this.expressionsService.getExpressions();
-    }, 100);
+  constructor(private expressionsService: ExpressionsService) {
   }
 
+  ngOnInit() {
+    this.expressionItems = this.expressionsService.getExpressions();
+    this.expressionsService.searchingByInput.subscribe((searchValues) => {
+      this.expressionItems = this.expressionsService.filterExpressions(searchValues.searchTerm, searchValues.searchTags);
+    });
+    this.expressionsService.searchingByTags.subscribe((searchValues) => {
+      this.expressionItems = this.expressionsService.filterExpressions(searchValues.searchTerm, searchValues.searchTags);
+    });
+  }
 }

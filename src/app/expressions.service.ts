@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { ExpressionItem } from './expression-item.model';
 
 const Expressions: ExpressionItem[] = [
@@ -64,6 +64,8 @@ const Expressions: ExpressionItem[] = [
 export class ExpressionsService {
   ExpressionItems: ExpressionItem[] = Expressions;
   filtered: ExpressionItem[] = Expressions;
+  searchingByInput = new EventEmitter();
+  searchingByTags = new EventEmitter();
 
   constructor() { }
 
@@ -71,10 +73,11 @@ export class ExpressionsService {
     return this.filtered;
   }
 
-  filterExpressions(searchTerm) {
-    console.log(searchTerm);
-    this.filtered = this.ExpressionItems.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
+  filterExpressions(searchTerm: string, tags: Set<string>) {
+    const tagsSet = new Set(tags);
+    this.filtered = this.ExpressionItems.filter((item) =>
+      (searchTerm === '' || item.title.toLowerCase().includes(searchTerm.toLowerCase())) &&
+      (tags.size === 0 || item.tags.filter(tag => (tagsSet.has(tag))).length > 0));
     return this.filtered;
   }
-
 }

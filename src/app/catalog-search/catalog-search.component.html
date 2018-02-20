@@ -9,8 +9,8 @@
   </form>
 </div>
 
-<<div class="tags row justify-content-sm-center">
+<div class="tags row justify-content-sm-center">
   <div class="col-10">
-    <span class="badge badge-default" *ngFor="let tag of tagList"> {{tag}} </span>
+    <span class="badge badge-default" *ngFor="let tag of tagList" (click)="searchByTag(tag)"> {{tag}} </span>
   </div>
 </div>
